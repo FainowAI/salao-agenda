@@ -1,0 +1,50 @@
+@startuml implantacao-iteracao-1
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 12
+skinparam nodesep 60
+skinparam ranksep 70
+skinparam dpi 200
+left to right direction
+
+title SalãoAgenda — Diagrama de Implantação (Construção · Iteração 1)
+
+node "Computador / Smartphone do usuário" <<device>> as dispUsuario {
+  node "Navegador web" <<executionEnvironment>> as browser {
+    artifact "SPA SalãoAgenda\n(React + supabase-js)" as spa
+  }
+}
+
+node "Vercel (hospedagem / CDN)" <<device>> as vercel {
+  node "Vercel Edge Network" <<executionEnvironment>> as edge {
+    artifact "build do front-end\nindex.html · JS · CSS\n(versão v0.1.0)" as build
+  }
+}
+
+node "Supabase (nuvem AWS)" <<device>> as supabase {
+  node "API Gateway" <<executionEnvironment>> as gw {
+    component "PostgREST\n(API REST gerada\na partir do banco)" as rest
+  }
+  node "PostgreSQL" <<executionEnvironment>> as pg {
+    database "Banco salao_agenda\ncliente · profissional · servico\nagendamento · agendamento_servico" as db
+  }
+  component "Supabase Studio\n(SQL Editor)" as studio
+}
+
+node "GitHub" <<device>> as github {
+  artifact "Repositório\nFainowAI/salao-agenda\n(tag v0.1.0)" as repo
+}
+
+node "Computador do desenvolvedor" <<device>> as dev {
+  artifact "Código-fonte local\n(Git)" as local
+}
+
+dispUsuario -- vercel : <<HTTPS>>\ndownload da SPA
+spa -- rest : <<HTTPS / REST · JSON>>\nconsultar horários (UC01)\nconfirmar agendamento (UC02)
+rest -- db : <<TCP · SQL>>\nporta 5432
+dev -- github : <<HTTPS / SSH>>\ngit push + tag
+github -- vercel : <<HTTPS · webhook>>\ndeploy automático
+dev -- studio : <<HTTPS>>\nconsultas diretas\n(evidência de persistência)
+
+@enduml

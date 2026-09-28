@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.local
+.vercel/
+*-logs.txt
+
+# material de aula de terceiros (não redistribuir em repositório público)
+docs/aula3-*.pdf

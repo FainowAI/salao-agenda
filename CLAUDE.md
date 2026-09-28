@@ -1,0 +1,29 @@
+# SalãoAgenda — contexto do projeto
+
+- **O que é:** projeto acadêmico **individual** de Antônio Marberger na disciplina Prática Profissional em ADS (Mackenzie EaD), com o Prof. Tomaz Mikio Sasaki. Não é projeto da Fainow: não usar identidade visual nem linguagem da Fainow.
+- **Processo:** Processo Unificado. Aula 3 = Construção, iteração 1 (tag `v0.1.0`). Aulas 4–5 = iteração 2. Aula 6 = Transição.
+- **Escopo da v0.1.0:**
+  - UC01 Consultar horários disponíveis;
+  - UC02 Confirmar agendamento;
+  - comprovante.
+  - Nada além disso.
+- **Stack:** Vite + React + TS na Vercel · Supabase (PostgreSQL + PostgREST + RPCs) · GitHub `FainowAI/salao-agenda`.
+- **Kanban:** GitHub Projects `users/FainowAI/projects/1`, com as colunas Backlog, Ready, In progress, In review e Done. Mova os cards conforme trabalha.
+- **Comece por `docs/README.md`**: é o índice do material de direcionamento, com a ordem de leitura.
+- **Documentos em `docs/`:**
+  - diagrama de implantação (`.png` e `.puml`);
+  - `SalaoAgenda_v2_analise_e_projeto.pdf`, o Documento de Análise e Projeto v2 e fonte da verdade funcional;
+  - `requisitos-aula-3.md`, com as exigências da disciplina;
+  - `entrega/`, com o Guia do Usuário já escrito;
+  - o resumo funcional está em `PROMPT-CONSTRUCAO.md`.
+- **Rótulos de botão já documentados no Guia do Usuário:**
+  - "Ver horários"
+  - "Qualquer profissional"
+  - "Voltar"
+  - "Confirmar agendamento"
+  - "Novo agendamento"
+  - "Tentar novamente"
+- **Regras:**
+  - commits em português;
+  - nenhum segredo no repositório;
+  - toda escrita no banco passa por RPC, nunca por INSERT direto do `anon`.
