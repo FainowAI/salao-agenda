@@ -7,3 +7,4 @@ dist/
 
 # material de aula de terceiros (não redistribuir em repositório público)
 docs/aula3-*.pdf
+.mcp.json
