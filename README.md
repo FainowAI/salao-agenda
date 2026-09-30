@@ -6,7 +6,7 @@ Projeto acadêmico individual de Antônio Marberger na disciplina Prática Profi
 
 | | |
 |---|---|
-| **Aplicação publicada** | _URL_PRODUCAO_ |
+| **Aplicação publicada** | https://salao-agenda-aula.vercel.app |
 | **Quadro Kanban** | https://github.com/users/FainowAI/projects/1 |
 | **Repositório** | https://github.com/FainowAI/salao-agenda (tag `v0.1.0`) |
 
