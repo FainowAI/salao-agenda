@@ -127,7 +127,7 @@ export function Confirmacao() {
             />
             {erros.telefone && <span className={s.erroCampo}>{erros.telefone}</span>}
             {reaproveitado && !erros.telefone && (
-              <span className={s.dica}>Encontramos seu cadastro. Confira seu nome e e-mail.</span>
+              <span className={`${s.dica} ${s.dicaSucesso}`} role="status">Encontramos seu cadastro. Confira seu nome e e-mail.</span>
             )}
           </label>
 

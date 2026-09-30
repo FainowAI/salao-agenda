@@ -15,6 +15,11 @@ export function Comprovante() {
       <p className={s.subtitulo}>Anote o código ou faça uma captura desta tela.</p>
 
       <section className={`${s.cartao} ${s.centro}`}>
+        <div className={s.selo} aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M8 16.5l5.5 5.5L24 11" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
         <span className={s.dica}>Código do agendamento</span>
         <strong className={s.codigo}>{c.codigo}</strong>
         <dl className={s.resumo} style={{ textAlign: 'left', maxWidth: 420, margin: '0 auto' }}>
@@ -34,7 +39,7 @@ export function Comprovante() {
       </section>
 
       <div className={s.acoes}>
-        <button type="button" className={`${s.botao} ${s.primario}`} onClick={() => navigate('/', { replace: true })}>
+        <button type="button" className={`${s.botao} ${s.primario} ${s.botaoLargo}`} onClick={() => navigate('/', { replace: true })}>
           Novo agendamento
         </button>
       </div>

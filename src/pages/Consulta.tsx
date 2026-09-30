@@ -105,7 +105,7 @@ export function Consulta() {
       <p className={s.subtitulo}>Escolha o serviço, o profissional e a data para ver os horários livres.</p>
 
       {aviso && (
-        <p className={`${s.mensagem} ${s.mensagemAviso}`} role="alert" style={{ marginBottom: 20 }}>
+        <p className={`${s.mensagem} ${s.mensagemAviso}`} role="alert">
           {aviso} Escolha outro horário na lista atualizada.
         </p>
       )}
@@ -171,7 +171,7 @@ export function Consulta() {
         </div>
 
         <div className={s.acoes}>
-          <button type="submit" className={`${s.botao} ${s.primario}`} disabled={!podeConsultar}>
+          <button type="submit" className={`${s.botao} ${s.primario} ${s.botaoLargo}`} disabled={!podeConsultar}>
             Ver horários
           </button>
         </div>
@@ -179,7 +179,14 @@ export function Consulta() {
 
       {consultados && lista.tipo !== 'ocioso' && (
         <section aria-live="polite">
-          <h2 className={s.tituloSecao}>Horários livres em {formatarData(consultados.data)}</h2>
+          <div className={s.cabecalhoSecao}>
+            <h2 className={s.tituloSecao}>Horários livres em {formatarData(consultados.data)}</h2>
+            {lista.tipo === 'pronto' && lista.horarios.length > 0 && (
+              <span className={s.contagem}>
+                {lista.horarios.length} {lista.horarios.length === 1 ? 'opção' : 'opções'}
+              </span>
+            )}
+          </div>
           <ListaHorarios
             estado={lista}
             mostrarProfissional={consultados.profissionalId === ''}

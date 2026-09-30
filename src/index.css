@@ -1,23 +1,66 @@
+/* Tokens no espírito das Human Interface Guidelines da Apple:
+   cores de sistema com variante clara e escura, fonte do sistema e
+   molas (duration/bounce) convertidas para curvas CSS linear(). */
 :root {
-  --fundo: #f6f5f2;
+  color-scheme: light dark;
+
+  --fundo: #f5f5f7;
   --superficie: #ffffff;
-  --texto: #1f2328;
-  --texto-suave: #5b6168;
-  --borda: #d9d6cf;
-  --primaria: #1f5f5b;
-  --primaria-escura: #174845;
-  --primaria-clara: #e3efed;
-  --erro: #b3261e;
-  --erro-fundo: #fbeceb;
-  --aviso-fundo: #fff4d6;
-  --aviso-borda: #e0b54a;
-  --raio: 10px;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
+  --preenchimento: #f2f2f7;
+  --texto: #1d1d1f;
+  --texto-suave: #6e6e73;
+  --separador: #d2d2d7;
+  --primaria: #0071e3;
+  --primaria-escura: #0062c4;
+  --primaria-texto: #0058b0;
+  --primaria-clara: #e8f1fc;
+  --sucesso: #248a3d;
+  --sucesso-clara: #e6f4ea;
+  --erro: #d70015;
+  --erro-fundo: #fdeceb;
+  --aviso-fundo: #fff6e0;
+  --aviso-borda: #f5c451;
+  --barra: rgb(245 245 247 / 0.72);
+  --sombra: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.05);
+
+  --raio: 18px;
+  --raio-controle: 12px;
+
+  /* Molas: smooth (bounce 0) e snappy (bounce 0.15). */
+  --mola-suave: linear(0, 0.029, 0.097, 0.186, 0.282, 0.376, 0.466, 0.547, 0.619, 0.682, 0.736, 0.782, 0.821, 0.854, 0.881, 0.903, 0.921, 0.936, 0.949, 0.959, 0.967, 0.973, 0.979, 0.983, 0.986, 1);
+  --mola: linear(0, 0.036, 0.122, 0.233, 0.352, 0.467, 0.573, 0.666, 0.745, 0.81, 0.862, 0.903, 0.935, 0.958, 0.975, 0.987, 0.995, 1.001, 1.004, 1.006, 1.006, 1.006, 1.006, 1.005, 1.004, 1.004, 1.003, 1.002, 1);
+  --rapido: 160ms;
+  --medio: 420ms;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.01em;
   color: var(--texto);
   background: var(--fundo);
   -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #000000;
+    --superficie: #1c1c1e;
+    --preenchimento: #2c2c2e;
+    --texto: #f5f5f7;
+    --texto-suave: #a1a1a6;
+    --separador: #38383a;
+    --primaria-texto: #6cb4ff;
+    --primaria-clara: rgb(10 132 255 / 0.18);
+    --sucesso: #30d158;
+    --sucesso-clara: rgb(48 209 88 / 0.16);
+    --erro: #ff6961;
+    --erro-fundo: rgb(255 69 58 / 0.15);
+    --aviso-fundo: rgb(255 214 10 / 0.12);
+    --aviso-borda: #ffd60a;
+    --barra: rgb(22 22 23 / 0.72);
+    --sombra: none;
+  }
 }
 
 *,
@@ -28,7 +71,7 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: var(--fundo);
 }
 
@@ -36,9 +79,26 @@ button,
 input,
 select {
   font: inherit;
+  letter-spacing: inherit;
+}
+
+button {
+  touch-action: manipulation;
 }
 
 :focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--primaria) 55%, transparent);
+  outline: 3px solid color-mix(in srgb, var(--primaria) 60%, transparent);
   outline-offset: 2px;
+}
+
+/* Movimento é opcional (HIG): com "reduzir movimento", tudo aparece direto. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import type { Horario } from '../lib/api'
 import { MENSAGEM_SEM_HORARIOS } from '../lib/erros'
 import { formatarHora } from '../lib/formato'
@@ -21,9 +22,16 @@ export function ListaHorarios({ estado, mostrarProfissional, onEscolher, onTenta
 
   if (estado.tipo === 'carregando') {
     return (
-      <p className={s.mensagem} role="status">
-        Buscando horários livres…
-      </p>
+      <div>
+        <p className={s.statusCarregando} role="status">
+          Buscando horários livres…
+        </p>
+        <ul className={`${s.grade} ${mostrarProfissional ? s.gradeComNome : ''}`} aria-hidden="true">
+          {Array.from({ length: 8 }, (_, i) => (
+            <li key={i} className={s.esqueleto} />
+          ))}
+        </ul>
+      </div>
     )
   }
 
@@ -50,8 +58,8 @@ export function ListaHorarios({ estado, mostrarProfissional, onEscolher, onTenta
 
   return (
     <ul className={`${s.grade} ${mostrarProfissional ? s.gradeComNome : ''}`} aria-label="Horários livres">
-      {estado.horarios.map((h) => (
-        <li key={`${h.profissional_id}-${h.hora_inicio}`}>
+      {estado.horarios.map((h, i) => (
+        <li key={`${h.profissional_id}-${h.hora_inicio}`} className={s.itemGrade} style={{ '--i': i } as CSSProperties}>
           <button type="button" className={s.horario} onClick={() => onEscolher(h)}>
             {formatarHora(h.hora_inicio)}
             {mostrarProfissional && <span className={s.horarioNome}>{h.profissional_nome}</span>}
