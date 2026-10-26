@@ -15,3 +15,5 @@ Leia nesta ordem antes de escrever código:
 ## Divergência conhecida
 
 O Documento v2 descreve o back-end em Spring (`RestController` + `CrudRepository`). A implementação usa **Supabase**: PostgREST mais funções RPC no Postgres. O papel das camadas serviço web, controle e persistência passa para a API do Supabase e para as funções do banco. Essa justificativa já está no documento de entrega, seção 3.
+
+<!-- Atividade didática da Aula 5: segundo arquivo alterado no exercício de merge. -->
