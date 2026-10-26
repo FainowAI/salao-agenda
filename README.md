@@ -95,3 +95,5 @@ Resultado esperado: três avisos `OK 1`, `OK 2` e `OK 3` e nenhum erro. A transa
 ## Evidência de persistência
 
 [`docs/consultas-evidencia.sql`](docs/consultas-evidencia.sql) tem as consultas do vídeo: últimos agendamentos com cliente, serviço e profissional (por `criado_em desc`), contagem por status, agenda de um profissional numa data e a própria `horarios_disponiveis` para mostrar que o horário confirmado sumiu.
+
+<!-- Atividade didática da Aula 5: alteração de exercício no branch iteracao2. -->
